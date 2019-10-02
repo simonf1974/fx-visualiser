@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FX Rates</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/7990971260.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <main>
+
+        <section>
+            <form action="">
+                <label for="date-1">Date 1</label>
+                <input type="date" name="date-1" id="date-1" required>
+                <label for="date-2">Date 2</label>
+                <input type="date" name="date-2" id="date-2" required>
+                <label for="base-ccy">Base Ccy</label>
+                <select name="base-ccy" id="base-ccy">
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+                    <option value="GBP">GBP</option>
+                    <option value="JPY">JPY</option>
+                    <option value="ILS">ILS</option>
+                    <option value="INR">INR</option>
+                    <option value="RUB">RUB</option>
+                </select>
+
+                <label for="dummy">Use dummy data?</label>
+                <input type="checkbox" name="dummy" id="dummy" required>
+            </form>
+        </section>
+
+        <section>
+            <button onclick="getExternalData()">Get Data</button>
+            <button onclick="visualiseData()">Visualise Fluctuations</button>
+        </section>
+
+        <section>
+            <table style="width:100%">
+                <tr>
+                    <th>Sym</th>
+                    <th>Code</th>
+                    <th>Diff %</th>
+                    <th>Diff</th>
+                    <th>Rate on Date 1</th>
+                    <th>Rate on Date 2</th>
+                </tr>
+                <tr id="EUR">
+                    <td><i class="fas fa-euro-sign"></i></td>
+                    <td>EUR</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="USD">
+                    <td><i class="fas fa-dollar-sign"></i></td>
+                    <td>USD</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="GBP">
+                    <td><i class="fas fa-pound-sign"></i></td>
+                    <td>GBP</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="JPY">
+                    <td><i class="fas fa-yen-sign"></i></td>
+                    <td>JPY</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="ILS">
+                    <td><i class="fas fa-shekel-sign"></i></td>
+                    <td>ILS</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="INR">
+                    <td><i class="fas fa-rupee-sign"></i></td>
+                    <td>INR</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="RUB">
+                    <td><i class="fas fa-ruble-sign"></i></td>
+                    <td>RUB</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </section>
+    </main>
+
+
+    <script src="main.js" async defer></script>
+</body>
+
+</html>
