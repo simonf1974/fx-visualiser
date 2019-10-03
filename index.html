@@ -9,48 +9,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/7990971260.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+        integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css">
     <link rel="stylesheet" href="main.css">
+    <script src="main.js" async defer></script>
+
 </head>
 
 <body>
+
+    <nav class="pure-menu pure-menu-horizontal">
+        <a href="http://db-portfolios.herokuapp.com/simon-freedland/index.html" class="pure-menu-heading pure-menu-link"
+            target="_blank">HOME</a>
+        <a href="./index.html" class="pure-menu-heading pure-menu-link">Compare FX Rates</a>
+    </nav>
+
     <main>
+        <section id="input">
+            <form action="" class="pure-form pure-form-aligned">
+                <div class="pure-control-group">
+                    <label for="date-1">Date 1</label>
+                    <input type="date" name="date-1" id="date-1" required>
+                    <span class="pure-form-message-inline">Enter first date to get rates for</span>
 
-        <section>
-            <form action="">
-                <label for="date-1">Date 1</label>
-                <input type="date" name="date-1" id="date-1" required>
-                <label for="date-2">Date 2</label>
-                <input type="date" name="date-2" id="date-2" required>
-                <label for="base-ccy">Base Ccy</label>
-                <select name="base-ccy" id="base-ccy">
-                    <option value="EUR">EUR</option>
-                    <option value="USD">USD</option>
-                    <option value="GBP">GBP</option>
-                    <option value="JPY">JPY</option>
-                    <option value="ILS">ILS</option>
-                    <option value="INR">INR</option>
-                    <option value="RUB">RUB</option>
-                </select>
+                </div>
+                <div class="pure-control-group">
+                    <label for="date-2">Date 2</label>
+                    <input type="date" name="date-2" id="date-2" required>
+                    <span class="pure-form-message-inline">Enter second date to get rates for</span>
+                </div>
+                <div class="pure-control-group">
+                    <label for="base-ccy">Base Ccy</label>
+                    <select name="base-ccy" id="base-ccy">
+                        <option value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                        <option value="GBP">GBP</option>
+                        <option value="JPY">JPY</option>
+                        <option value="ILS">ILS</option>
+                        <option value="INR">INR</option>
+                        <option value="RUB">RUB</option>
+                    </select>
+                    <span class="pure-form-message-inline">Choose base currency for comparison with the other
+                        currencies</span>
+                </div>
 
-                <label for="dummy">Use dummy data?</label>
-                <input type="checkbox" name="dummy" id="dummy" required>
+                <div class="pure-control-group">
+                    <label for="dummy">Use dummy data?</label>
+                    <input type="checkbox" name="dummy" id="dummy" required>
+                </div>
+
             </form>
+            <button class="pure-button pure-button-primary" onclick="getExternalData()">Get Data</button>
+            <button class="pure-button pure-button-primary" onclick="visualiseData()">Visualise Fluctuations</button>
         </section>
 
-        <section>
-            <button onclick="getExternalData()">Get Data</button>
-            <button onclick="visualiseData()">Visualise Fluctuations</button>
-        </section>
-
-        <section>
-            <table style="width:100%">
+        <section id="table">
+            <table>
                 <tr>
                     <th>Sym</th>
                     <th>Code</th>
                     <th>Diff %</th>
                     <th>Diff</th>
-                    <th>Rate on Date 1</th>
-                    <th>Rate on Date 2</th>
+                    <th>Rate (Date 1)</th>
+                    <th>Rate (Date 2)</th>
                 </tr>
                 <tr id="EUR">
                     <td><i class="fas fa-euro-sign"></i></td>
@@ -111,9 +133,6 @@
             </table>
         </section>
     </main>
-
-
-    <script src="main.js" async defer></script>
 </body>
 
 </html>

@@ -1,0 +1,26 @@
+section {
+  margin: 25px;
+}
+
+table {
+  width: 100%;
+
+  tr:first-of-type {
+    background-color: lightgray;
+  }
+
+  td:nth-child(n + 3) {
+    text-align: right;
+  }
+
+  td:nth-child(-n + 2) {
+    text-align: center;
+  }
+
+  td,
+  th {
+    padding: 8px 16px;
+    border: 1px solid gray;
+    transition: font-size 1s;
+  }
+}

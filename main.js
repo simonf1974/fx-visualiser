@@ -96,11 +96,17 @@ $("#base-ccy").change(function() {
 const populateTable = () => {
   resetVisualisations();
   rates.rates.forEach((rate, code) => {
-    const cells = document.getElementById(code).cells;
-    cells[2].innerText = rate.changePct().toFixed(3);
-    cells[3].innerText = rate.change().toFixed(3);
-    cells[4].innerText = rate.oldRate.toFixed(3);
-    cells[5].innerText = rate.newRate.toFixed(3);
+    const tblRow = document.getElementById(code);
+    if (code === rates.baseCcy) {
+      tblRow.hidden = true;
+      return;
+    } else {
+      tblRow.hidden = false;
+    }
+    tblRow.cells[2].innerText = rate.changePct().toFixed(3);
+    tblRow.cells[3].innerText = rate.change().toFixed(3);
+    tblRow.cells[4].innerText = rate.oldRate.toFixed(3);
+    tblRow.cells[5].innerText = rate.newRate.toFixed(3);
   });
 };
 
@@ -122,22 +128,19 @@ const callAjax = endpoint => {
 };
 
 const validateInput = (oldDate, newDate) => {
+  let message = null;
+
   if (oldDate === "" || newDate === "") {
-    alert("both dates must be specified");
-    return false;
+    message = "both dates must be specified";
+  } else if (newDate < oldDate) {
+    message = "date1 must be less than date 2";
+  } else if (oldDate < "2010-01-01") {
+    message = "date1 must be after 1st Jan 2010";
+  } else if (newDate > new Date().toISOString().slice(0, 10)) {
+    message = "dates cannot be in the future";
   }
 
-  if (newDate < oldDate) {
-    alert("date1 must be less than date 2");
-    return false;
-  }
-
-  if (oldDate < "2010-01-01") {
-    alert("date1 must be after 1st Jan 2010");
-    return false;
-  }
-
-  return true;
+  return message;
 };
 
 const getExternalData = json => {
@@ -145,7 +148,11 @@ const getExternalData = json => {
   const newDate = $("#date-2").val();
 
   if (json === undefined) {
-    if (!validateInput(oldDate, newDate)) return;
+    const validatedInput = validateInput(oldDate, newDate);
+    if (validatedInput !== null) {
+      alert(validatedInput);
+      return;
+    }
     if ($("#dummy").is(":checked")) {
       rates = new Rates(myVeryOldData, myRateData, $("#base-ccy").val());
       populateTable(rates);
@@ -173,15 +180,15 @@ $(document).ready(function() {
 
 const colourRow = (code, changeisPositive) => {
   if (changeisPositive) {
-    document.getElementById(code).style.backgroundColor = "green";
+    document.getElementById(code).style.backgroundColor = "#AFD5AA";
   } else {
-    document.getElementById(code).style.backgroundColor = "red";
+    document.getElementById(code).style.backgroundColor = "#F6CACB";
   }
 };
 
 const sizeCcySymbol = (code, sizefactor) => {
   const cells = document.getElementById(code).cells;
-  cells[0].style.fontSize = sizefactor * 7 + 1 + "em";
+  cells[0].style.fontSize = sizefactor * 5 + 1 + "em";
 };
 
 const visualiseData = () => {

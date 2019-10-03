@@ -1,1 +1,28 @@
-/* No CSS *//*# sourceMappingURL=main.css.map */
+section {
+  margin: 25px;
+}
+
+table {
+  width: 100%;
+}
+
+table tr:first-of-type {
+  background-color: lightgray;
+}
+
+table td:nth-child(n + 3) {
+  text-align: right;
+}
+
+table td:nth-child(-n + 2) {
+  text-align: center;
+}
+
+table td,
+table th {
+  padding: 8px 16px;
+  border: 1px solid gray;
+  -webkit-transition: font-size 1s;
+  transition: font-size 1s;
+}
+/*# sourceMappingURL=main.css.map */
