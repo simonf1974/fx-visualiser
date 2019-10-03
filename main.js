@@ -115,9 +115,11 @@ let newJson;
 const callAjax = endpoint => {
   const access_key = "5dbfa2a644784bd6c65507d03bf060d9";
 
+  //http:
+
   $.ajax({
     url:
-      "http://data.fixer.io/api/" +
+      "//data.fixer.io/api/" +
       endpoint +
       "?access_key=" +
       access_key +
