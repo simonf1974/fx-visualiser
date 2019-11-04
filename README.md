@@ -11,3 +11,7 @@ This was my first project using JavaScript functions and classes. I wrote this a
 I modelled Rate and Rates classes to hold the state of the FX rates being returned from the external API. The API allows retrieval of rates for a given date. I call this twice to get data for the two dates selected by the user and my classes calculate the variance in rate between the two dates.
 
 As the API only gives rates with respect to a fixed base currency (EUR), my classes also recalculate the data with respect to the base currency chosen by the user.
+
+## Screenshot
+
+![Screenshot](readme-img.png)
